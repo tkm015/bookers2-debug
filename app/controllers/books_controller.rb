@@ -4,6 +4,8 @@ before_action :authenticate_user!
 
   def show
   	@book = Book.find(params[:id])
+    @book_comment = BookComment.new
+    @book_comments = BookComment.all
     @books =Book.new
     @user = User.find(@book.user_id)
   end
