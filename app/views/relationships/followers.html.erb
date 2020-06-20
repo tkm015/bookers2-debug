@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+	  <div class="col-xs-9">
+      <h1>Followers Users</h1>
+      <table class="table table-hover table-inverse">
+      	<thead>
+      		<tr>
+      			<th>image</th>
+      			<th>name</th>
+      			<th colspan="4"></th>
+      		</tr>
+      	</thead>
+		    <tbody>
+        <% @users.each do |user| %>
+       	  <tr>
+     		    <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
+     		    <td><%= user.name%></td>
+     		    <td><span>フォロー数:<%= user.followings.count %></span></td>
+     		    <td><span>フォロワー数:<%= user.followers.count %></span></td>
+     		    <td><%= render 'relationships/follow_button', user: user %></td>
+     		    <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
+       	  </tr>
+       	<% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
