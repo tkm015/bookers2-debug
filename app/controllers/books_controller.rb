@@ -5,9 +5,9 @@ before_action :authenticate_user!
   def show
   	@book = Book.find(params[:id])
     @book_comment = BookComment.new
-    @book_comments = BookComment.all
     @books =Book.new
     @user = User.find(@book.user_id)
+    @book_comments = @book.book_comments
   end
 
   def index
