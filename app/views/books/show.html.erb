@@ -29,14 +29,12 @@
 					<td><%= "コメント数:#{@book.book_comments.count}" %></td>
 				</tr>
 			</table>
-			<table>
+			<table class="show-tb comment_<%= @book.id %>">
 				<tbody>
-					<tr id="comments_area">
-						<%= render 'book_comments/comment', book_comments: @book_comments %>
-					</tr>
+						<%= render 'book_comments/comment', book_comments: @book.book_comments %>
 				</tbody>
 			</table>
-			<%= form_with(model: [@book, @book_comment], url: book_book_comments_path(@book), remote: true) do |f| %>
+			<%= form_with model: [@book, @book_comment], data: {remote: true} do |f| %>
 			  <%= f.text_area :comment, rows:'5', cols:'100', placeholder: "コメントをここに", id: "textarea" %>
 			  <%= f.submit "送信" %>
 			<% end %>
