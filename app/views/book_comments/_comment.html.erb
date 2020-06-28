@@ -1,4 +1,4 @@
-<% book_comments.each do |book_comment| %>
+　<% book_comments.each do |book_comment| %>
  <tr>
 	<td><%= attachment_image_tag(book_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
 	<td><%= book_comment.comment %></td>
